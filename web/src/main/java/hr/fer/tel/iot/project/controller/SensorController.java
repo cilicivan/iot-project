@@ -23,7 +23,7 @@ public class SensorController {
 
     @GetMapping(value = "/{id}")
     public Sensor getSensor(@PathVariable Long id){
-        return sensorRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        return sensorRepository.findById(id).orElseThrow(() -> new RuntimeException("Sensor does not exit"));
     }
 
     @PostMapping

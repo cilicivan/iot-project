@@ -1,10 +1,7 @@
 package hr.fer.tel.iot.project.controller;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
 public class WebController {
@@ -14,9 +11,9 @@ public class WebController {
         return "index.html";
     }
 
-    @GetMapping(value = "/error")
+    @GetMapping(value = "/404")
     public String error(){
-        return "404.html";
+        return "error.html";
     }
 
 }
