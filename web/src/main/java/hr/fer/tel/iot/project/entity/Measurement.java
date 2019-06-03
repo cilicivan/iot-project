@@ -2,8 +2,6 @@ package hr.fer.tel.iot.project.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-@Getter
-@Setter
+
 public class Measurement {
 
     @Id @GeneratedValue
@@ -32,5 +29,31 @@ public class Measurement {
         this.temperature=temperature;
         this.brightness=brightness;
         this.sensor=sensor;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public double getTemperature() {
+        return temperature;
+    }
+
+    public double getBrightness() {
+        return brightness;
+    }
+
+    public Sensor getSensor() {
+        return sensor;
+    }
+
+    @Override
+    public String toString(){
+        return "Measurement{"+
+                "id="+ id +
+                ", temperature=" + temperature +
+                ", brightness=" + brightness +
+                ", sensorid=" + sensor.getId()+
+                "}";
     }
 }

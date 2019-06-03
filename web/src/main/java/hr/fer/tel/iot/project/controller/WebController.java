@@ -14,9 +14,9 @@ public class WebController {
         return "index.html";
     }
 
-   // @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(RuntimeException.class)
-    public String exceptionHandler(){
+    @GetMapping(value = "/error")
+    public String error(){
         return "404.html";
     }
+
 }

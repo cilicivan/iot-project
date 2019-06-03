@@ -19,7 +19,7 @@ public class DbInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Sensor sensor=new Sensor("123-sdfb-234-ASA");
+        Sensor sensor=new Sensor("123","Senzor u sobi");
         sensorRepository.save(sensor);
 
         Measurement measurement=new Measurement(24.5,8.3,sensor);

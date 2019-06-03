@@ -5,10 +5,7 @@ import hr.fer.tel.iot.project.repository.SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,8 +22,16 @@ public class SensorController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Sensor> getMeasurement(@PathVariable Long id){
-        return new ResponseEntity<>(sensorRepository.getOne(id),HttpStatus.OK);
+    public Sensor getSensor(@PathVariable Long id){
+        return sensorRepository.findById(id).orElseThrow(() -> new RuntimeException());
+    }
+
+    @PostMapping
+    public Sensor addSensor(@RequestParam(value = "serial") String serial,
+                            @RequestParam(value="name") String name){
+        Sensor sensor=new Sensor(serial,name);
+        return sensorRepository.save(sensor);
+
     }
 
 }
