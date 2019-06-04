@@ -11,6 +11,11 @@ public class WebController {
         return "index.html";
     }
 
+    @GetMapping(value = "/form")
+    public String form(){
+        return "form.html";
+    }
+
     @GetMapping(value = "/404")
     public String error(){
         return "error.html";

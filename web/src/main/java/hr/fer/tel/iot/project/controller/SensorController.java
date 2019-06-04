@@ -2,6 +2,7 @@ package hr.fer.tel.iot.project.controller;
 
 import hr.fer.tel.iot.project.entity.Sensor;
 import hr.fer.tel.iot.project.repository.SensorRepository;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/sensors")
 public class SensorController {
+    public static Double temperature=20.0;
+    public static Double brightness=25.6;
 
     @Autowired
     private SensorRepository sensorRepository;
@@ -32,6 +35,29 @@ public class SensorController {
         Sensor sensor=new Sensor(serial,name);
         return sensorRepository.save(sensor);
 
+    }
+
+    @GetMapping(value = "params")
+    public String getParams(){
+        System.out.println("Dobio get, temp"+ temperature + ", bri" + brightness);
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.accumulate("temperature",temperature);
+        jsonObject.accumulate("brightness",brightness);
+        return jsonObject.toString();
+    }
+    @PostMapping(value = "/params")
+    public String setParams(@RequestParam(value = "temperature") String setTemperature,
+                                @RequestParam(value = "brightness") String setBrightness){
+
+        System.out.println("dobio post");
+        Double temperatureValue=Double.parseDouble(setTemperature);
+        Double brightnessValue=Double.parseDouble(setBrightness);
+        temperature=temperatureValue;
+        brightness=brightnessValue;
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.accumulate("temperature",temperature);
+        jsonObject.accumulate("brightness",brightness);
+        return jsonObject.toString();
     }
 
 }

@@ -15,19 +15,30 @@ public class Measurement {
     @Id @GeneratedValue
     private Long id;
 
-    private double temperature;
-    private double brightness;
+    private String parameter;
+    private Double value;
+    private Boolean presence;
+
+//    private Double temperature;
+//    private Double brightness;
+//    private Boolean presence;
+
+
+
+    private Long time;
 
     @ManyToOne
     @JsonBackReference
     private Sensor sensor;
 
     public Measurement(){
-        this(10.0,10.0,new Sensor());
+        this("temperature",10.0,true,1L,new Sensor());
     }
-    public Measurement(double temperature, double brightness, Sensor sensor){
-        this.temperature=temperature;
-        this.brightness=brightness;
+    public Measurement(String parameter, Double value,Boolean presence, Long time, Sensor sensor){
+       this.parameter=parameter;
+       this.presence=presence;
+       this.value=value;
+        this.time=time;
         this.sensor=sensor;
     }
 
@@ -35,24 +46,33 @@ public class Measurement {
         return id;
     }
 
-    public double getTemperature() {
-        return temperature;
+    public Double getValue() {
+        return value;
     }
 
-    public double getBrightness() {
-        return brightness;
+    public Boolean getPresence() {
+        return presence;
+    }
+
+    public String getParameter() {
+        return parameter;
     }
 
     public Sensor getSensor() {
         return sensor;
     }
 
+
+    public Long getTime() {
+        return time;
+    }
+
     @Override
     public String toString(){
         return "Measurement{"+
                 "id="+ id +
-                ", temperature=" + temperature +
-                ", brightness=" + brightness +
+//                ", temperature=" + temperature +
+//                ", brightness=" + brightness +
                 ", sensorid=" + sensor.getId()+
                 "}";
     }

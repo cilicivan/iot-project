@@ -10,7 +10,6 @@
     <script src="main.js"></script>
 </head>
 <body>
-
 <nav class="navbar navbar-default">
     <div  class="container-fluid">
         <div class="navbar-header">
@@ -18,16 +17,22 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="/logout">Logout</a></li>
-            <li><a href="#">Page 1</a></li>
-            <li><a href="#">Page 2</a></li>
-            <li><a href="#">Page 3</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sensors
+                    <span class="caret"></span></a>
+                <ul  id="sensors" class="dropdown-menu"></ul>
+            </li>
+            <li class="active"><a href="/form">Change values</a></li>
+
         </ul>
+
     </div>
 
 </nav>
 
-<div class="container">
-    <h3>Sensors</h3>
+<div id="sensor" class="container">
+    <h3 id="temperature"></h3>
+    <h3 id="brightness"></h3>
     <table class="table table-dark">
         <thead>
         <tr>
@@ -60,8 +65,8 @@
         </tr>
         </tbody>
     </table>
-<a href="#"> go home</a>
 </div>
+<a href="#"> go home</a>
 
 </body>
 </html>
