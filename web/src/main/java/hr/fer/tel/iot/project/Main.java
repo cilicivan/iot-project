@@ -23,10 +23,9 @@ import java.util.Map;
 public class Main {
 
     public static final String url="http://localhost:8090/measurements";
-    private static final String USER_AGENT = "Mozilla/5.0";
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         RestTemplate restTemplate=new RestTemplate();
         HttpHeaders headers=new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

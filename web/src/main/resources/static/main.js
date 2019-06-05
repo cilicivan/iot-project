@@ -213,3 +213,15 @@ function isRelevant(parameter) {
     }
     return false
 }
+
+$(document).keydown(function(event) {
+    if($('#myModal').is(':visible')){
+        if (event.keyCode == 27) {
+            $('#myModal').modal('hide');
+        }
+        if(event.keyCode==13){
+            $('#openFormFromModal').click();
+        }
+    }
+
+});
