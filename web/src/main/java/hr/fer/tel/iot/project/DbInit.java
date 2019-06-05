@@ -24,7 +24,7 @@ public class DbInit implements CommandLineRunner {
         Sensor sensor=new Sensor("1","Senzor temperature u sobi");
         sensorRepository.save(sensor);
 
-        Measurement measurement=new Measurement("temperature",17.0,true,1559668188L,sensor);
+        Measurement measurement=new Measurement("temperature-inside",17.0,true,1559668188L,sensor);
         measurementRepository.save(measurement);
 
         Sensor sensor1=new Sensor("2","Senzor vlage u sobi");
@@ -41,7 +41,7 @@ public class DbInit implements CommandLineRunner {
         Sensor sensor3=new Sensor("4","Vanjski senzor za temperaturu");
         sensorRepository.save(sensor3);
 
-        Measurement measurement3=new Measurement("temperature",25.0,null,NOW,sensor3);
+        Measurement measurement3=new Measurement("temperature-outside",25.0,null,NOW,sensor3);
         measurementRepository.save(measurement3);
     }
 }

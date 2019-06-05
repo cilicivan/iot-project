@@ -15,6 +15,7 @@ import java.util.List;
 public class SensorController {
     public static Double temperature=20.0;
     public static Double brightness=25.6;
+    public static String state="good";
 
     @Autowired
     private SensorRepository sensorRepository;

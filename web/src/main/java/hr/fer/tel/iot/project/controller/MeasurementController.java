@@ -36,12 +36,25 @@ public class MeasurementController {
     @PostMapping
     public Measurement createMeasurement(@RequestParam(value = "parameter", required = false) String parameter,
                                          @RequestParam(value = "value", required = false) Double value,
-                                         @RequestParam(value = "presence",required = false) Boolean presence,
                                          @RequestParam(value = "time",required = false) Long time,
-                                         @RequestParam(value = "sensorSerial") String sensorSerial) {
+                                         @RequestParam(value = "sensorSerial" ) String sensorSerial) {
+        System.out.println("slfkmgsfdk");
 
         Sensor sensor = sensorRepository.findBySerial(sensorSerial);
-        Measurement measurement = new Measurement(parameter,value,presence,time, sensor);
+        Measurement measurement = new Measurement(parameter,value,null,time, sensor);
+        sensorRepository.save(sensor);
+
+        measurementRepository.save(measurement);
+
+        return measurement;
+    }
+
+    @PostMapping(value = "/presence")
+    public Measurement createPresenceMEasurement(@RequestParam(value = "presence") Boolean presence,
+                                                 @RequestParam(value = "time",required = false) Long time,
+                                                 @RequestParam(value = "sensorSerial") String sensorSerial){
+        Sensor sensor = sensorRepository.findBySerial(sensorSerial);
+        Measurement measurement = new Measurement(null,null,presence,time, sensor);
         measurementRepository.save(measurement);
         sensorRepository.save(sensor);
 
