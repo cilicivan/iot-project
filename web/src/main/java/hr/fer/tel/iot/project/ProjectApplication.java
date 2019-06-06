@@ -11,7 +11,7 @@ public class ProjectApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(ProjectApplication.class, args);
-		//new Thread(new ReadDeviceToCloudMessages()).start();
+		new Thread(new ReadDeviceToCloudMessages()).start();
 	}
 
 }
